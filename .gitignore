@@ -1,0 +1,25 @@
+;;extensions to ignore
+*.log
+*.pot
+*.pyc
+
+;;directories to ignore
+.idea/
+
+__pycache__/
+node_modules/
+env/
+.vscode/
+
+# Folder only used for collectstatic
+dietWeb/staticfiles
+dietWeb/media/
+dietWeb/env.py
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+
+.env
+myenv/
