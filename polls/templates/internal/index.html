@@ -1,0 +1,86 @@
+{% extends 'internal/base_internal.html' %}
+
+{% block title %}{{ super() }} | Inicio{% endblock title %}
+
+{% block custom_css %}{% endblock custom_css %}
+
+{% block page_content %}
+<div class="row border-bottom white-bg dashboard-header">
+    <div class="col-md-6">
+        <h2><strong>Indica el nivel de intensidad de tus síntomas</strong></h2>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight" >
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+          <div class="table-responsive">
+              <table class="table table-striped table-bordered" id="food-table">
+                <thead>
+                  <tr role="row">
+                    <th>Sintoma</th>
+                    <th>Descripcion</th>
+                    <th>Nivel de Intensidad</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for symp in symptoms %}
+                    <tr role="row">
+                      <td>{{ symp.name }}</td>
+                      <td>{{ symp.description }}</td>
+                      <td>
+                        <select class="form-control m-b" id="comboBox" name="type">
+                              {% for level in levels_symps %}
+                                  <option value="{{ level[0] }}">{{ level[1]}}</option>
+                              {% endfor %}
+                        </select>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+    
+          </div>
+          <div class="row col-md-4">
+              <input type="submit" onclick="send_symptoms()"class="btn btn-primary col-md-4" name="registrar"
+                id="register_button" value="Registrar">
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock page_content %}
+
+{% block custom_js %}
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+<script src="{{ static('js/datatable-config.js') }}"></script>
+<script>
+  
+
+if (!$('.message-container .messages li').length) {
+  showToastr('Bienvenido ');
+}
+
+$('#food-table').DataTable({
+  responsive: true,
+})
+function send_symptoms(){
+  var symptoms_levels = [];
+  var i;
+  $('select option:selected').each(function(){
+    symptoms_levels.push($(this).attr("value"));
+  });
+  console.log(symptoms_levels);
+
+  
+}
+</script>
+
+{% endblock custom_js %}
+
+

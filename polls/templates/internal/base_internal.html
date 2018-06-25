@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block base_css %}
+{{ super() }}
+
+{% endblock base_css %}
+
+{% block base_content %}
+<div id="wrapper">
+    {% block sidebar %}
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+      <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+          <li class="nav-header">
+            <div class="profile-element">
+              <a>
+                <span class="clear">
+                  <span class="block m-t-xs">
+                    <strong class="font-bold">Bienvenido</strong>
+                  </span>
+                </span>
+              </a>
+
+            </div>
+            <div class="logo-element">
+              PUCP
+            </div>
+          </li>
+          <li>
+            <a >
+              <i class="fa fa-home"></i>
+              <span class="nav-label">Inicio</span>
+            </a>
+        </ul>
+      </div>
+    </nav>
+    {% endblock sidebar %}
+    {% block base_topbar %}
+    <div class="row border-bottom">
+      <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+          <a href="#" class="navbar-minimalize minimalize-styl-2 btn btn-primary">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
+       <ul class="nav navbar-top-links navbar-left">
+          <li>
+            <a class="js-back-btn navbar-top-btn">
+              <i class="fa fa-arrow-left"></i> Atrás
+            </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-top-links navbar-right">
+          <li>
+            <span class="m-r-sm text-muted welcome-message">
+                Bienvenido al agente Recomendador de Dietas
+            </span>
+          </li>
+         
+        </ul>
+      </nav>
+    </div>
+  {% endblock base_topbar %}
+
+  <div id="page-wrapper" class="gray-bg dashbard_2">
+    {% block base_page_content %}
+
+
+
+
+      {% block page_content %}{% endblock page_content %}
+
+      {% block base_footer %}
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="footer fixed">
+              Agente Recomendador de Dietas
+            </div>
+          </div>
+        </div>
+      {% endblock base_footer %}
+    {% endblock base_page_content %}
+  </div>
+</div>
+<div class="message-container hidden">
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} data-tags="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock base_content %}
+
+{% block base_js %}
+{{ super() }}
+
+{% endblock base_js %}
